@@ -46,9 +46,9 @@ def formatName(filename):
 t0 = time.time()
 
 # Change this to the folder path you would like it to download to.
-downloadDir = "C:\\Users\\shale_000\\OneDrive\\FireFoxDownloads\\Miracle of Sound\\"
+downloadDir = "C:\\..."
 # Change this to the playlist URL
-playlistURL = "https://www.youtube.com/playlist?list=PL90229471516D05ED"
+playlistURL = "https://www.youtube.com/playlist?list=..."
 fp = webdriver.FirefoxProfile()
 
 # Some profile settings.
