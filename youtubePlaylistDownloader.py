@@ -35,6 +35,7 @@ def formatName(filename):
     newName = re.sub("Lyrics","",newName)
     newName = re.sub("LYRICS","",newName)
     newName = re.sub("HD","",newName)
+    newName = re.sub("HQ","",newName)
     newName = re.sub("  "," ",newName)# gets rid of any double spaces formed
     newName = newName.strip()
     if newName[-1] == '.':
@@ -46,9 +47,9 @@ def formatName(filename):
 t0 = time.time()
 
 # Change this to the folder path you would like it to download to.
-downloadDir = "C:\\..."
+downloadDir = "C:\\Users\\Shalevos\\Music\\Fun Stuff\\"
 # Change this to the playlist URL
-playlistURL = "https://www.youtube.com/playlist?list=..."
+playlistURL = "https://www.youtube.com/playlist?list=PLEv648BeDhnIoSX1SPa7xGJSasszkEghF"
 fp = webdriver.FirefoxProfile()
 
 # Some profile settings.
