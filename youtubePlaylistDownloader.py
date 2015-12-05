@@ -38,7 +38,7 @@ def formatName(filename):
     newName = re.sub("HQ","",newName)
     newName = re.sub("  "," ",newName)# gets rid of any double spaces formed
     newName = newName.strip()
-    if newName[-1] == '.':
+    if newName[-1] == '.' or newName[-1] == '_':
         newName = newName[:-1]
     newName = newName + ".mp3"
     return newName
@@ -47,9 +47,9 @@ def formatName(filename):
 t0 = time.time()
 
 # Change this to the folder path you would like it to download to.
-downloadDir = "C:\\Users\\Shalevos\\Music\\Fun Stuff\\"
+downloadDir = "C:\\Users\\Shalevos\\Music\\Rock\\"
 # Change this to the playlist URL
-playlistURL = "https://www.youtube.com/playlist?list=PLEv648BeDhnIoSX1SPa7xGJSasszkEghF"
+playlistURL = "https://www.youtube.com/playlist?list=PLEv648BeDhnIfnmKNM9yQ-9rbwBaEwktu"
 fp = webdriver.FirefoxProfile()
 
 # Some profile settings.
@@ -83,8 +83,8 @@ print (len(videoList))
 
 # Now for the download section:
 i = 1
+driver.get("http://www.youtube-mp3.org/")
 for video in videoList:
-    driver.get("http://www.youtube-mp3.org/")
     textField = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID ,"youtube-url")))
     print (ytDomain+video)
     textField.clear()
@@ -96,7 +96,6 @@ for video in videoList:
         )
         downloadLink.click()
         print (str(i) + " of " + str(len(videoList)))
-        time.sleep(0.5)
     except:
         print ("Not all files have been dowloaded")
     i=i+1
