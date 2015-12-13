@@ -9,6 +9,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.firefox.webdriver import FirefoxProfile
+import magic
 import time
 import re
 
@@ -17,10 +18,15 @@ This function checks for any ongoing downloads in the download directory.
 """
 def isDownloadDone():
     #Goes through all files in downloadDir
+    print("Hi")
     for path,subdirs,files in os.walk(downloadDir):
+        print("This")
         for filename in files:
+            print("is")
             # Checks if there a file with .part extension
-            if(filename.endswith(".part")):
+            #if(filename.endswith(".part")):
+            print(magic.from_file(downloadDir + filename, mime = True))
+            if(magic.from_file(downloadDir + filename, mime = True) != "audio/mpeg"):
                 return False
     return True
 
@@ -47,7 +53,7 @@ def formatName(filename):
 t0 = time.time()
 
 # Change this to the folder path you would like it to download to.
-downloadDir = "C:\\Users\\Shalevos\\Music\\Rock\\"
+downloadDir = "~/Music/Rock/"
 # Change this to the playlist URL
 playlistURL = "https://www.youtube.com/playlist?list=PLEv648BeDhnIfnmKNM9yQ-9rbwBaEwktu"
 fp = webdriver.FirefoxProfile()
@@ -102,8 +108,9 @@ for video in videoList:
 
 #-----------Renaming Files-----------------
 
-while(isDownloadDone() == False):
-    time.sleep(0.5)
+#while(isDownloadDone() == False):
+ #   time.sleep(0.5)
+print(isDownloadDone())
 
 for path, subdirs, files in os.walk(downloadDir):
    for filename in files:
